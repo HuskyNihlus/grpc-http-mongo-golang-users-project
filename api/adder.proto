@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "pkg/api";
+
+service Adder {
+  rpc Add(AddRequest) returns (AddResponse) {}
+  rpc GetAll(GetAllRequest) returns (GetAllResponse) {}
+  rpc GetByID(GetByIDRequest) returns (GetByIDResponse) {}
+}
+
+message AddRequest {
+  string name = 1;
+  string last_name = 2;
+  int32 age = 3;
+}
+
+message AddResponse {
+  string id = 1;
+}
+
+message GetAllRequest {
+}
+
+message GetAllResponse {
+  repeated User users = 1;
+}
+
+message GetByIDRequest {
+  string id = 1;
+}
+
+message GetByIDResponse {
+  User user = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string last_name = 3;
+  int32 age = 4;
+  int64 recording_date = 5;
+}
+
